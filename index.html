@@ -131,10 +131,46 @@ label{display:block;font-weight:700;margin:10px 0 5px}textarea,input[type=text]{
 textarea{min-height:130px;resize:vertical}.question{padding:16px 0;border-bottom:1px solid var(--line)}.options{display:grid;gap:8px;margin-top:8px}.option{background:#f5f8fc;color:var(--ink);text-align:left;border:1px solid var(--line);font-weight:400}.option.selected{border-color:var(--blue);background:#e6f1ff}.feedback{margin-top:8px;font-size:14px}.footer{color:var(--muted);font-size:13px;text-align:center;padding:18px}
 a{color:var(--blue)}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row .btn{display:inline-block;text-decoration:none}
 @media(max-width:600px){.hero,.card{padding:17px}main{padding:0 12px 30px}.navinner{padding:8px}.navbtn{padding:9px 11px}}
+
+/* Aztur watermark */
+header {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+header .aztur-watermark {
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  font-size: clamp(64px, 12vw, 150px);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  opacity: 0.18;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 600px) {
+  header .aztur-watermark {
+    top: auto;
+    bottom: 8px;
+    right: 12px;
+    transform: none;
+    font-size: 48px;
+    opacity: 0.13;
+  }
+}
+
 </style>
 </head>
 <body>
 <header>
+   <div class="aztur-watermark" aria-hidden="true">Aztur</div>
  <div class="wrap">
   <div class="brand">Interactive Digital Writing Module</div>
   <h1>WriteSmart</h1>
