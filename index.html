@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WriteSmart | Interactive Writing Module</title>
+<style>
+:root{--navy:#142b4a;--blue:#2864a6;--sky:#eaf4ff;--ink:#203047;--muted:#617188;--line:#dce5ef;--paper:#fff;--mint:#dff6ee;--gold:#fff3cf}
+*{box-sizing:border-box}body{margin:0;background:#f4f7fb;color:var(--ink);font:16px/1.65 Arial,Helvetica,sans-serif}
+header{background:linear-gradient(120deg,#142b4a,#2864a6);color:white;padding:30px 22px 26px}
+.wrap{max-width:1100px;margin:auto}.brand{font-size:13px;letter-spacing:.16em;text-transform:uppercase;opacity:.85;font-weight:700}
+header h1{font-size:clamp(32px,5vw,52px);line-height:1.1;margin:8px 0}header p{max-width:680px;margin:10px 0 18px;color:#e8f2ff}
+.pills{display:flex;gap:8px;flex-wrap:wrap}.pill{border:1px solid #8db4df;border-radius:999px;padding:4px 10px;font-size:12px}
+nav{background:white;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5;box-shadow:0 2px 10px #142b4a0b}
+.navinner{max-width:1100px;margin:auto;display:flex;gap:8px;overflow:auto;padding:10px 14px}
+button,.btn{border:0;border-radius:10px;padding:10px 14px;background:var(--blue);color:white;font-weight:700;cursor:pointer;font-size:14px}
+button:hover,.btn:hover{filter:brightness(.95)}button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid #f2c14e;outline-offset:2px}
+.navbtn{white-space:nowrap;background:#eef4fb;color:var(--navy)}.navbtn.active{background:var(--navy);color:white}
+main{max-width:1100px;margin:24px auto;padding:0 16px 44px}.page{display:none}.page.active{display:block}
+.hero,.card{background:white;border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:16px;box-shadow:0 6px 22px #142b4a08}
+.hero{background:linear-gradient(120deg,#fff,#eaf4ff)}h2{font-size:28px;line-height:1.2;margin:0 0 10px;color:var(--navy)}h3{margin:0 0 8px;color:var(--navy)}h4{margin:12px 0 4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.chapter-card{background:white;border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.num{font-size:12px;font-weight:700;color:var(--blue);letter-spacing:.1em;text-transform:uppercase}
+.small{font-size:13px;color:var(--muted)}.callout{border-left:4px solid var(--blue);background:var(--sky);padding:13px 16px;border-radius:8px;margin:12px 0}
+.good{background:var(--mint);padding:12px 15px;border-radius:10px}.warning{background:var(--gold);padding:12px 15px;border-radius:10px}
+.example{border:1px dashed #a9bdd4;border-radius:12px;padding:15px;background:#fbfdff}
+label{display:block;font-weight:700;margin:10px 0 5px}textarea,input[type=text]{width:100%;padding:12px;border:1px solid #b9c8d9;border-radius:10px;font:inherit;background:#fff}
+textarea{min-height:130px;resize:vertical}.question{padding:16px 0;border-bottom:1px solid var(--line)}.options{display:grid;gap:8px;margin-top:8px}.option{background:#f5f8fc;color:var(--ink);text-align:left;border:1px solid var(--line);font-weight:400}.option.selected{border-color:var(--blue);background:#e6f1ff}.feedback{margin-top:8px;font-size:14px}.footer{color:var(--muted);font-size:13px;text-align:center;padding:18px}
+a{color:var(--blue)}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row .btn{display:inline-block;text-decoration:none}
+@media(max-width:600px){.hero,.card{padding:17px}main{padding:0 12px 30px}.navinner{padding:8px}.navbtn{padding:9px 11px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="wrap">
+  <div class="brand">Interactive Digital Writing Module</div>
+  <h1>WriteSmart</h1>
+  <p><strong>Write Better. Think Clearly. WriteSmart.</strong><br>Build stronger paragraphs and essays through short lessons, practice, peer feedback, and responsible AI-assisted revision.</p>
+  <div class="pills"><span class="pill">Senior High School · Grade 10–11</span><span class="pill">Writing Skills</span><span class="pill">Self-paced learning</span><span class="pill">AI literacy</span></div>
+ </div>
+</header>
+<nav><div class="navinner" id="nav">
+ <button class="navbtn active" data-page="home">Home</button>
+ <button class="navbtn" data-page="ch1">Chapter 1</button><button class="navbtn" data-page="ch2">Chapter 2</button>
+ <button class="navbtn" data-page="ch3">Chapter 3</button><button class="navbtn" data-page="ch4">Chapter 4</button>
+ <button class="navbtn" data-page="ch5">Chapter 5</button><button class="navbtn" data-page="quiz">Final Quiz</button>
+</div></nav>
+<main>
+<section id="home" class="page active">
+ <div class="hero"><div class="num">Welcome, writers</div><h2>Small steps. Strong writing.</h2>
+ <p>Use this module to move from one clear paragraph to a complete argumentative essay. Read the lesson, study the model, complete the activity, and check your understanding before moving on.</p>
+ <div class="row"><button onclick="showPage('ch1')">Start learning →</button><button class="navbtn" onclick="showPage('quiz')">Try the final quiz</button></div></div>
+ <div class="grid">
+  <div class="chapter-card"><div class="num">Chapter 1</div><h3>Paragraph Structure</h3><p>Topic sentences, supporting details, concluding sentences.</p><button onclick="showPage('ch1')">Open chapter</button></div>
+  <div class="chapter-card"><div class="num">Chapter 2</div><h3>Thesis & Outlines</h3><p>Take a position and plan your essay before drafting.</p><button onclick="showPage('ch2')">Open chapter</button></div>
+  <div class="chapter-card"><div class="num">Chapter 3</div><h3>Cohesion & AI</h3><p>Connect ideas and use AI feedback critically.</p><button onclick="showPage('ch3')">Open chapter</button></div>
+  <div class="chapter-card"><div class="num">Chapter 4</div><h3>Peer Review</h3><p>Give useful feedback and revise your draft.</p><button onclick="showPage('ch4')">Open chapter</button></div>
+  <div class="chapter-card"><div class="num">Chapter 5</div><h3>Publish & Reflect</h3><p>Prepare your final essay and reflect on progress.</p><button onclick="showPage('ch5')">Open chapter</button></div>
+ </div>
+ <div class="card"><h3>How to use WriteSmart</h3><ol><li>Read each short lesson and model.</li><li>Complete the practice task in your notebook or Google Docs.</li><li>Check your answer using the feedback provided.</li><li>Use AI as a helper—not as a replacement for your own ideas.</li><li>Finish with the final writing task and reflection.</li></ol></div>
+</section>
+<section id="ch1" class="page">
+ <div class="hero"><div class="num">Chapter 1 · Learn the building blocks</div><h2>Foundations of Paragraph Structure</h2><p>A strong paragraph focuses on one main idea and supports it with relevant details.</p></div>
+ <div class="card"><h3>1. The three key parts</h3><p><strong>Topic sentence:</strong> introduces the main idea and controlling opinion.</p><p><strong>Supporting details:</strong> explain, illustrate, or give reasons for the topic sentence.</p><p><strong>Concluding sentence:</strong> brings the paragraph to a close by restating the main point in a fresh way.</p>
+ <div class="example"><p><strong>Topic sentence:</strong> Social media can support students' learning when they use it purposefully.</p><p><strong>Supporting detail 1:</strong> Students can join online study groups to share notes.</p><p><strong>Supporting detail 2:</strong> Teachers can post useful videos and learning resources.</p><p><strong>Supporting detail 3:</strong> Classmates can discuss difficult topics after school.</p><p><strong>Concluding sentence:</strong> Therefore, purposeful social media use can make learning more collaborative.</p></div></div>
+ <div class="card"><h3>2. Try it: identify the supporting detail</h3><p>Topic sentence: “Social media platforms can improve collaborative learning.” Which sentence best supports it?</p>
+ <div class="options"><button class="option" onclick="checkInline(this,false,'This is about addiction, not collaborative learning.')">A. Social media can sometimes be addictive.</button><button class="option" onclick="checkInline(this,true,'This directly explains how students collaborate and share learning materials.')">B. Students can form online study groups to share notes.</button><button class="option" onclick="checkInline(this,false,'This is about school policy rather than collaborative learning.')">C. Many schools restrict phone use in classrooms.</button></div><div class="feedback" aria-live="polite"></div></div>
+ <div class="card"><h3>3. Your turn</h3><p>Write one topic sentence about healthy study habits, then add two relevant supporting details.</p><textarea placeholder="Topic sentence: ...&#10;Supporting detail 1: ...&#10;Supporting detail 2: ..."></textarea><p class="small">Drafts in this prototype stay in this browser session; copy your work into Google Docs to keep it.</p></div>
+ <div class="row"><button onclick="showPage('ch2')">Next: Chapter 2 →</button></div>
+</section>
+<section id="ch2" class="page">
+ <div class="hero"><div class="num">Chapter 2 · Plan before you draft</div><h2>Thesis Statements & Essay Outlines</h2><p>A thesis statement gives your essay a clear position. An outline helps each paragraph support that position.</p></div>
+ <div class="card"><h3>1. From topic to thesis</h3><p><strong>Topic:</strong> social media for learning</p><p><strong>Weak thesis:</strong> Social media is an interesting topic.</p><p><strong>Stronger thesis:</strong> Social media should be used as a learning tool because it helps students share resources, discuss ideas, and receive feedback.</p><div class="callout">A useful thesis states your position and previews the main reasons you will explain.</div></div>
+ <div class="card"><h3>2. Simple argumentative essay outline</h3><ol><li><strong>Introduction:</strong> introduce the topic and state the thesis.</li><li><strong>Body paragraph 1:</strong> explain reason one with evidence or an example.</li><li><strong>Body paragraph 2:</strong> explain reason two with evidence or an example.</li><li><strong>Conclusion:</strong> restate the position and summarize the key reasons.</li></ol></div>
+ <div class="card"><h3>3. Build your plan</h3><label for="position">My position</label><input id="position" type="text" placeholder="I believe that..."><label for="reason1">Reason 1</label><input id="reason1" type="text" placeholder="One reason is..."><label for="reason2">Reason 2</label><input id="reason2" type="text" placeholder="Another reason is..."><label for="reason3">Reason 3 or example</label><input id="reason3" type="text" placeholder="For example..."><button onclick="makeOutline()">Create my outline</button><div id="outlineResult" class="callout" aria-live="polite">Your outline will appear here.</div></div>
+ <div class="row"><button onclick="showPage('ch1')" class="navbtn">← Chapter 1</button><button onclick="showPage('ch3')">Next: Chapter 3 →</button></div>
+</section>
+<section id="ch3" class="page">
+ <div class="hero"><div class="num">Chapter 3 · Make ideas flow</div><h2>Cohesion, Transitions & AI-Assisted Drafting</h2><p>Transitions show the relationship between ideas. Cohesion helps readers follow your message.</p></div>
+ <div class="card"><h3>1. Common transition words</h3><div class="grid"><div class="chapter-card"><strong>Addition</strong><p>Furthermore, in addition, also</p></div><div class="chapter-card"><strong>Contrast</strong><p>However, in contrast, on the other hand</p></div><div class="chapter-card"><strong>Cause and effect</strong><p>Therefore, as a result, consequently</p></div><div class="chapter-card"><strong>Example</strong><p>For example, for instance</p></div></div><div class="warning"><strong>Punctuation tip:</strong> When “however” connects two independent clauses, use a semicolon before it and a comma after it: “Social media is useful; however, it can distract students.”</div></div>
+ <div class="card"><h3>2. Responsible AI-assisted drafting</h3><ol><li>Write your own ideas and first draft.</li><li>Ask an AI tool to identify grammar, clarity, or cohesion issues.</li><li>Review each suggestion and decide whether it preserves your intended meaning.</li><li>Verify facts and examples; AI can make mistakes.</li><li>Keep your own voice and follow your teacher’s rules for AI use.</li></ol><div class="example"><strong>Prompt you can adapt:</strong><p>“Please give feedback on my paragraph for grammar, clarity, and transition words. Do not rewrite the whole paragraph. Explain each suggestion and let me decide what to change.”</p></div></div>
+ <div class="card"><h3>3. Quick practice</h3><p>Choose the best transition: “Online platforms provide access to learning resources. ________, they allow students to study flexibly.”</p><div class="options"><button class="option" onclick="checkInline(this,false,'This signals contrast, but the second sentence adds another benefit.')">A. In contrast</button><button class="option" onclick="checkInline(this,true,'This adds another supporting benefit to the first sentence.')">B. In addition</button><button class="option" onclick="checkInline(this,false,'This signals a result rather than an additional benefit.')">C. As a result</button></div><div class="feedback" aria-live="polite"></div></div>
+ <div class="row"><button class="navbtn" onclick="showPage('ch2')">← Chapter 2</button><button onclick="showPage('ch4')">Next: Chapter 4 →</button></div>
+</section>
+<section id="ch4" class="page">
+ <div class="hero"><div class="num">Chapter 4 · Learn from feedback</div><h2>Peer Review & Feedback Integration</h2><p>Peer review helps writers see whether their ideas are clear to another reader.</p></div>
+ <div class="card"><h3>1. Use the “Two Stars and a Wish” method</h3><ul><li><strong>Star 1:</strong> identify one strength in the argument or organization.</li><li><strong>Star 2:</strong> identify a second strength, such as a clear example or transition.</li><li><strong>Wish:</strong> suggest one specific improvement the writer can make.</li></ul></div>
+ <div class="card"><h3>2. Peer-review checklist</h3><p>Use this checklist in Google Docs comments or when reviewing a partner’s draft.</p>
+ <label><input type="checkbox"> The thesis clearly states a position.</label><label><input type="checkbox"> Each body paragraph has one main idea.</label><label><input type="checkbox"> Supporting details relate to the topic sentence.</label><label><input type="checkbox"> Transition words show clear relationships.</label><label><input type="checkbox"> Grammar and punctuation have been checked.</label><label><input type="checkbox"> The conclusion returns to the main argument.</label></div>
+ <div class="card"><h3>3. Give helpful feedback</h3><div class="example"><p><strong>Less helpful:</strong> “Your paragraph is confusing.”</p><p><strong>More helpful:</strong> “Your second reason is interesting. Could you add an example to show how an online study group helps students learn?”</p></div><p>Be kind, specific, and focused on the writing—not the writer.</p></div>
+ <div class="row"><button class="navbtn" onclick="showPage('ch3')">← Chapter 3</button><button onclick="showPage('ch5')">Next: Chapter 5 →</button></div>
+</section>
+<section id="ch5" class="page">
+ <div class="hero"><div class="num">Chapter 5 · Publish your work</div><h2>Reflect and Publish: Final Essay Showcase</h2><p>Bring your ideas, outline, draft, and feedback together to produce a polished argumentative paragraph or essay.</p></div>
+ <div class="card"><h3>1. Final writing task</h3><p>Write a <strong>100–120-word argumentative paragraph</strong> on this topic:</p><div class="callout"><strong>“Should students use social media for learning?”</strong><br>State your position, support it with relevant reasons or examples, use transitions, and finish with a concluding sentence.</div><label for="finalDraft">Write your paragraph</label><textarea id="finalDraft" placeholder="In my opinion, ..."></textarea><div class="row"><button onclick="countWords()">Count words</button><span id="wordCount" class="small" aria-live="polite">0 words</span></div><p class="small">Copy your final version to Google Docs for submission or portfolio use.</p></div>
+ <div class="card"><h3>2. Final self-check</h3><label><input type="checkbox"> My position is clear.</label><label><input type="checkbox"> I included relevant supporting details.</label><label><input type="checkbox"> I used transition words appropriately.</label><label><input type="checkbox"> I checked grammar, spelling, and punctuation.</label><label><input type="checkbox"> I reviewed AI and peer suggestions critically.</label></div>
+ <div class="card"><h3>3. Reflect: 3–2–1 exit ticket</h3><label for="three">Three things I learned</label><textarea id="three" placeholder="1. ...&#10;2. ...&#10;3. ..."></textarea><label for="two">Two things I improved in my writing</label><textarea id="two" placeholder="1. ...&#10;2. ..."></textarea><label for="one">One goal for my next essay</label><textarea id="one" placeholder="My next writing goal is..."></textarea><button onclick="showPage('quiz')">Finish and take the quiz →</button></div>
+ <div class="row"><button class="navbtn" onclick="showPage('ch4')">← Chapter 4</button><button onclick="showPage('quiz')">Final quiz →</button></div>
+</section>
+<section id="quiz" class="page">
+ <div class="hero"><div class="num">Check your learning</div><h2>WriteSmart Final Quiz</h2><p>Answer each question, then select “Check my score” to review your results and feedback.</p></div>
+ <div class="card" id="quizBox">
+ <div class="question" data-answer="B" data-feedback="A topic sentence introduces the main idea and controlling opinion."><strong>1. What is the main purpose of a topic sentence?</strong><div class="options"><button class="option" data-value="A">A. To list all the examples</button><button class="option" data-value="B">B. To state the paragraph’s main idea</button><button class="option" data-value="C">C. To introduce unrelated information</button><button class="option" data-value="D">D. To repeat every sentence</button></div><div class="feedback"></div></div>
+ <div class="question" data-answer="C" data-feedback="A concluding sentence gives the paragraph closure and reinforces its main point."><strong>2. Which sentence works best as a conclusion?</strong><div class="options"><button class="option" data-value="A">A. First, students need a notebook.</button><button class="option" data-value="B">B. Some students prefer blue pens.</button><button class="option" data-value="C">C. Overall, good planning helps students write clearer essays.</button><button class="option" data-value="D">D. For example, my friend uses a laptop.</button></div><div class="feedback"></div></div>
+ <div class="question" data-answer="A" data-feedback="Furthermore adds another supporting point; however signals contrast."><strong>3. Complete the sentence: “The app offers writing practice. ________, it gives instant feedback.”</strong><div class="options"><button class="option" data-value="A">A. Furthermore</button><button class="option" data-value="B">B. However</button><button class="option" data-value="C">C. In contrast</button><button class="option" data-value="D">D. Although</button></div><div class="feedback"></div></div>
+ <div class="question" data-answer="D" data-feedback="A useful thesis states a clear position and can preview the main reasons."><strong>4. Which is the strongest thesis for an argumentative essay?</strong><div class="options"><button class="option" data-value="A">A. Social media exists today.</button><button class="option" data-value="B">B. This essay is about social media.</button><button class="option" data-value="C">C. Many teenagers have phones.</button><button class="option" data-value="D">D. Schools should teach responsible social media use because it supports collaboration and digital literacy.</button></div><div class="feedback"></div></div>
+ <div class="question" data-answer="B" data-feedback="AI suggestions should be checked for accuracy and fit with the writer’s intended meaning."><strong>5. How should a writer use AI feedback?</strong><div class="options"><button class="option" data-value="A">A. Accept every suggestion without checking.</button><button class="option" data-value="B">B. Review suggestions critically and keep control of the final text.</button><button class="option" data-value="C">C. Ask AI to invent sources and statistics.</button><button class="option" data-value="D">D. Replace the writer’s ideas with a full AI essay.</button></div><div class="feedback"></div></div>
+ <div class="question" data-answer="C" data-feedback="Specific and respectful feedback helps a writer understand what to revise and how."><strong>6. Which peer-review comment is most helpful?</strong><div class="options"><button class="option" data-value="A">A. “Bad paragraph.”</button><button class="option" data-value="B">B. “I do not like this topic.”</button><button class="option" data-value="C">C. “Could you add an example to explain your second reason?”</button><button class="option" data-value="D">D. “Rewrite everything.”</button></div><div class="feedback"></div></div>
+ <button onclick="gradeQuiz()">Check my score</button> <button class="navbtn" onclick="resetQuiz()">Try again</button><div id="score" class="callout" aria-live="polite">Your score will appear here.</div>
+ </div>
+</section>
+<div class="footer">WriteSmart · Interactive writing practice · Prototype content for Google Sites adaptation</div>
+</main>
+<script>
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('.navbtn[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===id));window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('.navbtn[data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+function checkInline(btn,correct,msg){const box=btn.closest('.card');box.querySelectorAll('.option').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');box.querySelector('.feedback').textContent=msg;box.querySelector('.feedback').style.color=correct?'#16734b':'#9a4b12'}
+function makeOutline(){const p=document.getElementById('position').value.trim(),a=document.getElementById('reason1').value.trim(),b=document.getElementById('reason2').value.trim(),c=document.getElementById('reason3').value.trim();document.getElementById('outlineResult').innerHTML='<strong>Draft outline</strong><br>Thesis: '+(p||'Add your position above.')+'<br>Body point 1: '+(a||'Add reason 1.')+'<br>Body point 2: '+(b||'Add reason 2.')+'<br>Example/support: '+(c||'Add an example.')+'<br>Conclusion: Restate your position in fresh words.'}
+function countWords(){const t=document.getElementById('finalDraft').value.trim();const n=t?t.split(/\s+/).length:0;document.getElementById('wordCount').textContent=n+' words'+(n<100?' · Add more detail to reach 100–120 words.':n>120?' · Consider trimming to 100–120 words.':' · Within the target range.')}
+document.querySelectorAll('#quizBox .question .option').forEach(btn=>btn.addEventListener('click',()=>{const q=btn.closest('.question');q.querySelectorAll('.option').forEach(x=>x.classList.remove('selected'));btn.classList.add('selected');q.dataset.chosen=btn.dataset.value}));
+function gradeQuiz(){let score=0;document.querySelectorAll('#quizBox .question').forEach(q=>{const good=q.dataset.chosen===q.dataset.answer;if(good)score++;const f=q.querySelector('.feedback');f.textContent=(good?'Well done! ':'Review: ')+q.dataset.feedback;f.style.color=good?'#16734b':'#9a4b12'});document.getElementById('score').textContent='Your score: '+score+' / 6 ('+Math.round(score/6*100)+'%). Review the feedback above, then try again if you want more practice.'}
+function resetQuiz(){document.querySelectorAll('#quizBox .question').forEach(q=>{delete q.dataset.chosen;q.querySelectorAll('.option').forEach(b=>b.classList.remove('selected'));q.querySelector('.feedback').textContent=''});document.getElementById('score').textContent='Your score will appear here.'}
+</script>
+</body>
+</html>
